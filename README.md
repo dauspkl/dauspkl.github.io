@@ -1,2 +1,0 @@
-# dauspkl.github.io
-web
