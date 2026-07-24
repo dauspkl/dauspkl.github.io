@@ -1,101 +1,233 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>barang</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background: linear-gradient(135deg, #000000 0%, #8b0000 50%, #ffcc00 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<title>Dashboard Sarana & Prasarana</title>
 
-        .dashboard-container {
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            max-width: 450px;
-            width: 90%;
-        }
+<style>
 
-        .logo-ftik {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 20px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-        h1 {
-            color: #1a1a1a;
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-        p {
-            color: #555555;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
+    /* Background tetap seperti desain awal */
+    background: linear-gradient(
+        135deg,
+        #000000 0%,
+        #8b0000 50%,
+        #ffcc00 100%
+    );
+}
 
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+.dashboard-container{
 
-        .btn-sheet {
-            display: block;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            padding: 14px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    position:relative;
+    overflow:hidden;
 
-        .btn-1 { background-color: #dc2626; color: white; } 
-        .btn-2 { background-color: #b91c1c; color: white; } 
-        .btn-3 { background-color: #333333; color: white; } 
-        .btn-4 { background-color: #1a1a1a; color: white; } 
-        .btn-5 { background-color: #eab308; color: #1a1a1a; } 
+    width:470px;
+    max-width:92%;
 
-        .btn-sheet:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-            filter: brightness(1.1);
-        }
+    padding:35px;
 
-        .btn-sheet:active {
-            transform: translateY(0);
-        }
-    </style>
+    border-radius:20px;
+
+    background:url("gedung.png") center/cover no-repeat;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+
+}
+
+.dashboard-container::before{
+
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.28);
+
+    backdrop-filter:blur(3px);
+
+}
+
+.dashboard-content{
+
+    position:relative;
+    z-index:2;
+    text-align:center;
+
+}
+
+.logo-ftik{
+
+    width:190px;
+    margin-bottom:18px;
+
+}
+
+h2{
+
+    color:white;
+    font-size:28px;
+    margin-bottom:8px;
+    text-shadow:0 2px 5px rgba(0,0,0,.5);
+
+}
+
+p{
+
+    color:#f2f2f2;
+    font-size:15px;
+    margin-bottom:28px;
+    text-shadow:0 2px 5px rgba(0,0,0,.5);
+
+}
+
+.button-group{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+}
+
+.btn-sheet{
+
+    text-decoration:none;
+    color:white;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+
+}
+
+.btn-sheet:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 14px 25px rgba(0,0,0,.35);
+
+    filter:brightness(1.05);
+
+}
+
+.btn-1{
+
+    background:#dc2626;
+
+}
+
+.btn-2{
+
+    background:#b91c1c;
+
+}
+
+.btn-disabled{
+
+    background:#4b4b4b;
+    color:#d9d9d9;
+
+    pointer-events:none;
+    cursor:not-allowed;
+
+    opacity:.8;
+
+}
+
+.btn-warning{
+
+    background:#eab308;
+    color:#1a1a1a;
+
+    pointer-events:none;
+    cursor:not-allowed;
+
+}
+
+.footer{
+
+    margin-top:25px;
+
+    color:white;
+
+    font-size:12px;
+
+    opacity:.85;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <div class="dashboard-container">
-        <img src="FTIK.png" alt="Logo FTIK" class="logo-ftik">
-        <p>Dashboard Layanan Sarana dan Prasarana</p>
-        <div class="button-group">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScyV_of33L8r6ScMpLpI_oPHgxrSZyTxv8X5JPYubOPKw6Vew/viewform?usp=dialog" target="_blank" class="btn-sheet btn-1">Peminjaman alat dan barang</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7xQ57W_LTi_FLtBcKxC5q8Tm7VMw20FG2W8FUZr3L_uIouw/viewform?usp=dialog" target="_blank" class="btn-sheet btn-2">Peminjaman ruang</a>
-            <a href="MASUKKAN_LINK_GOOGLE_SHEET_3_DI_SINI" target="_blank" class="btn-sheet btn-3">BELUM TERSEDIA</a>
-            <a href="MASUKKAN_LINK_GOOGLE_SHEET_4_DI_SINI" target="_blank" class="btn-sheet btn-4">BELUM TERSEDIA </a>
-            <a href="MASUKKAN_LINK_GOOGLE_SHEET_5_DI_SINI" target="_blank" class="btn-sheet btn-5">BELUM TERSEDIA</a>
-        </div>
-    </div>
+<div class="dashboard-container">
+
+<div class="dashboard-content">
+
+<img src="FTIK.png" alt="Logo FTIK" class="logo-ftik">
+
+<h2>Dashboard</h2>
+
+<p>Layanan Sarana dan Prasarana FTIK</p>
+
+<div class="button-group">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScyV_of33L8r6ScMpLpI_oPHgxrSZyTxv8X5JPYubOPKw6Vew/viewform?usp=dialog"
+target="_blank"
+class="btn-sheet btn-1">
+Peminjaman Alat dan Barang
+</a>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSd7xQ57W_LTi_FLtBcKxC5q8Tm7VMw20FG2W8FUZr3L_uIouw/viewform?usp=dialog"
+target="_blank"
+class="btn-sheet btn-2">
+Peminjaman Ruang
+</a>
+
+<a class="btn-sheet btn-disabled">
+BELUM TERSEDIA
+</a>
+
+<a class="btn-sheet btn-disabled">
+BELUM TERSEDIA
+</a>
+
+<a class="btn-sheet btn-warning">
+SEGERA HADIR
+</a>
+
+</div>
+
+<div class="footer">
+
+© 2024 FTIK • Dashboard Sarana & Prasarana
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
+
